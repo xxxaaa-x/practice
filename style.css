@@ -1,0 +1,257 @@
+/* =====================================================
+   StudentSuppliesOrderingSystem - style.css
+   ===================================================== */
+
+/* ---------- 1. Color and size settings ----------
+   Change a value here and it updates everywhere. */
+:root {
+  --navy: #1f3a68;
+  --navy-light: #2c4f8f;
+  --yellow: #f2b705;
+  --page-bg: #f3f6fb;
+  --card-bg: #ffffff;
+  --border: #d5dcea;
+  --text: #1d2b44;
+  --text-soft: #5b6b8a;
+  --header-bg: #eaf0fa;
+  --radius: 8px;
+}
+
+/* ---------- 2. Basic setup ---------- */
+* {
+  box-sizing: border-box;   /* padding no longer makes boxes wider */
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ---------- 3. Header ---------- */
+header {
+  background-color: var(--navy);
+  color: #ffffff;
+  padding: 24px 20px;
+  text-align: center;
+  border-bottom: 6px solid var(--yellow);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin: 6px 0 0;
+  font-size: 1rem;
+  color: #d9e3f5;
+}
+
+/* ---------- 4. Page layout (desktop) ----------
+   main is a grid with 2 columns:
+   - Product list takes the full width
+   - Cart and Order summary sit side by side
+   - Payment and Receipt sit side by side */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 20px;
+  align-items: start;
+}
+
+#product-list {
+  grid-column: 1 / -1;      /* span both columns */
+}
+
+/* ---------- 5. Section boxes ---------- */
+section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+section h2 {
+  margin: 0 0 18px;
+  font-size: 1.3rem;
+  color: var(--navy);
+  border-bottom: 3px solid var(--yellow);
+  padding-bottom: 8px;
+}
+
+/* ---------- 6. Product cards ---------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.product {
+  background-color: #fbfcff;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--navy);
+  border-radius: var(--radius);
+  padding: 18px 14px;
+  text-align: center;
+}
+
+.product:hover {
+  border-color: var(--navy);
+}
+
+.product h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.product .price {
+  margin: 0 0 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--navy);
+}
+
+/* ---------- 7. Buttons ---------- */
+button {
+  background-color: var(--navy);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--navy-light);
+}
+
+/* Visible outline when using the keyboard */
+button:focus,
+input:focus,
+select:focus {
+  outline: 3px solid var(--yellow);
+}
+
+/* Make the Remove buttons in the cart smaller */
+#shopping-cart button {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  background-color: #b3382c;
+}
+
+#shopping-cart button:hover {
+  background-color: #8f2b22;
+}
+
+/* Place order button is wider */
+#payment button {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 1rem;
+}
+
+/* ---------- 8. Cart table ---------- */
+.table-wrapper {
+  overflow-x: auto;         /* scrolls if the table is too wide */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background-color: var(--header-bg);
+  color: var(--navy);
+}
+
+/* ---------- 9. Order summary ---------- */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.summary-total {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 2px solid var(--navy);
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+/* ---------- 10. Payment form ---------- */
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #aab6cf;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* ---------- 11. Receipt ---------- */
+.receipt {
+  padding: 20px;
+  border: 2px dashed #aab6cf;
+  border-radius: var(--radius);
+  background-color: #fbfcff;
+}
+
+.receipt h3 {
+  margin: 0 0 12px;
+  text-align: center;
+  color: var(--navy);
+}
+
+.receipt p {
+  margin: 4px 0;
+}
+
+.receipt hr {
+  margin: 14px 0;
+  border: none;
+  border-top: 1px dashed #aab6cf;
+}
+
+/* ---------- 12. Footer ---------- */
+footer {
+  padding: 18px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+
+/* ---------- 13. Smaller screens ----------
+   On narrow windows, stack everything in one column. */
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}

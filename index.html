@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StudentSuppliesOrderingSystem</title>
+
+  <style>
+    /* ---------- Basic setup ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f3f6fb;
+      color: #1d2b44;
+      line-height: 1.5;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      background-color: #1f3a68;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 6px solid #f2b705;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      font-size: 0.95rem;
+    }
+
+    /* ---------- Page layout ---------- */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    section {
+      background-color: #ffffff;
+      border: 1px solid #d5dcea;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    section h2 {
+      margin-top: 0;
+      font-size: 1.3rem;
+      color: #1f3a68;
+      border-bottom: 2px solid #f2b705;
+      padding-bottom: 8px;
+    }
+
+    /* ---------- Product list ---------- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .product {
+      border: 1px solid #d5dcea;
+      border-radius: 6px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+
+    .product .price {
+      font-weight: bold;
+      margin: 0 0 10px;
+    }
+
+    /* ---------- Buttons ---------- */
+    button {
+      background-color: #1f3a68;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2c4f8f;
+    }
+
+    button:focus,
+    input:focus,
+    select:focus {
+      outline: 3px solid #f2b705;
+    }
+
+    /* ---------- Tables (cart and summary) ---------- */
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #d5dcea;
+    }
+
+    th {
+      background-color: #eaf0fa;
+    }
+
+    /* ---------- Order summary ---------- */
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+    }
+
+    .summary-total {
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-top: 2px solid #1f3a68;
+      margin-top: 6px;
+      padding-top: 10px;
+    }
+
+    /* ---------- Payment form ---------- */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      width: 100%;
+      max-width: 400px;
+      padding: 9px;
+      border: 1px solid #aab6cf;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* ---------- Receipt ---------- */
+    .receipt {
+      border: 2px dashed #aab6cf;
+      border-radius: 6px;
+      padding: 20px;
+      max-width: 450px;
+      background-color: #fbfcff;
+    }
+
+    .receipt h3 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #5b6b8a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <h1>StudentSuppliesOrderingSystem</h1>
+    <p>Order the school supplies you need</p>
+  </header>
+
+  <main>
+
+    <!-- ================= 1. PRODUCT LIST ================= -->
+    <section id="product-list">
+      <h2>Product list</h2>
+
+      <div id="product-grid" class="product-grid">
+
+        <div class="product">
+          <h3>Notebook</h3>
+          <p class="price">₱45.00</p>
+          <button>Add to cart</button>
+        </div>
+
+        <div class="product">
+          <h3>Ballpen (Blue)</h3>
+          <p class="price">₱12.00</p>
+          <button>Add to cart</button>
+        </div>
+
+        <div class="product">
+          <h3>Pencil</h3>
+          <p class="price">₱8.00</p>
+          <button>Add to cart</button>
+        </div>
+
+        <div class="product">
+          <h3>Ruler</h3>
+          <p class="price">₱20.00</p>
+          <button>Add to cart</button>
+        </div>
+
+        <div class="product">
+          <h3>Eraser</h3>
+          <p class="price">₱10.00</p>
+          <button>Add to cart</button>
+        </div>
+
+        <div class="product">
+          <h3>Pad Paper</h3>
+          <p class="price">₱35.00</p>
+          <button>Add to cart</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 2. SHOPPING CART ================= -->
+    <section id="shopping-cart">
+      <h2>Shopping cart</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cart-body">
+            <!-- Sample row. Rows will be added by JavaScript later. -->
+           
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= 3. ORDER SUMMARY ================= -->
+    <section id="order-summary">
+
+        <h2>Order summary</h2>
+
+        <div class="summary-line">
+        <span>Number of items</span>
+        <span id="summary-items">0</span>
+        </div>
+
+        <div class="summary-line">
+        <span>Subtotal</span>
+        <span id="summary-subtotal">₱0.00</span>
+        </div>
+
+        <div class="summary-line">
+        <span>Delivery fee</span>
+        <span>₱0.00</span>
+        </div>
+
+        <div class="summary-line summary-total">
+        <span>Total</span>
+        <span id="summary-total">₱0.00</span>
+        </div>
+
+</section>
+
+    <!-- ================= 4. PAYMENT SECTION ================= -->
+    <section id="payment">
+      <h2>Payment</h2>
+
+      <div class="form-group">
+        <label for="student-name">Student name</label>
+        <input type="text" id="student-name" placeholder="Enter your full name">
+      </div>
+
+      <div class="form-group">
+        <label for="student-id">Student ID</label>
+        <input type="text" id="student-id" placeholder="Enter your student ID">
+      </div>
+
+      <div class="form-group">
+        <label for="payment-method">Payment method</label>
+        <select id="payment-method">
+          <option value="">Choose a payment method</option>
+          <option value="cash">Cash</option>
+          <option value="gcash">GCash</option>
+          <option value="card">Credit or debit card</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="amount-paid">Amount paid</label>
+        <input type="number" id="amount-paid" placeholder="0.00">
+      </div>
+
+        <button id="place-order">
+        Place order
+        </button>
+    </section>
+
+    <!-- ================= 5. RECEIPT SECTION ================= -->
+    <section id="receipt">
+    <h2>Receipt</h2>
+    <div class="receipt" id="receipt-content">
+    <h3>StudentSuppliesOrderingSystem</h3>
+    <p>No transaction yet.</p>
+    </div>
+    </section>
+
+  </main>
+
+  <footer>
+    StudentSuppliesOrderingSystem &copy; 2026
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
